@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://3bv6r1aea7ok" path="res://3d assets/materials/wire2.tres" id="1_016uc"]
 [ext_resource type="Script" uid="uid://dbfy141wn8ld6" path="res://ui/3_dclock.gd" id="2_330nd"]
 [ext_resource type="Shader" uid="uid://byi25004pfdci" path="res://ui/mainmenu.gdshader" id="4_187hc"]
+[ext_resource type="Script" uid="uid://dvohau47inocf" path="res://ui/camtr.gd" id="5_4amms"]
 
 [sub_resource type="Gradient" id="Gradient_4amms"]
 offsets = PackedFloat32Array(0, 0.15671642, 0.21641791, 1)
@@ -14,12 +15,12 @@ gradient = SubResource("Gradient_4amms")
 width = 100
 height = 100
 fill = 1
-fill_from = Vector2(0.95454544, 0.7878788)
+fill_from = Vector2(0.97979796, 0.7828283)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_187hc"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0.0074626864, 0.5895522, 0.67164177)
+offsets = PackedFloat32Array(0.0074626864, 0.5895522, 0.75373137)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_187hc"]
@@ -33,7 +34,7 @@ shader_parameter/threshold = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uvulu"]
 noise_type = 2
-frequency = 0.005
+frequency = 0.0042
 fractal_type = 3
 cellular_distance_function = 3
 
@@ -440,8 +441,10 @@ script = ExtResource("1_0y3v4")
 
 [node name="3dclock" type="Node3D" parent="SubViewport" unique_id=2129000539]
 script = ExtResource("2_330nd")
-time = 15285.0
+time = 42693.53063495258
 starttime = Vector3(4, 14, 45)
+timeeff = 14.95
+rapid = true
 
 [node name="Cube3" type="MeshInstance3D" parent="SubViewport/3dclock" unique_id=268595767]
 transform = Transform3D(0.9361413, 0, 0, 0, 0.9361413, 0, 0, 0, 0.9361413, -0.0030028913, 0.0017210655, 0)
@@ -460,7 +463,7 @@ surface_material_override/0 = ExtResource("1_016uc")
 surface_material_override/1 = ExtResource("1_016uc")
 
 [node name="sec" type="Node3D" parent="SubViewport/3dclock" unique_id=1653137921]
-transform = Transform3D(2.2488186e-05, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 2.2488186e-05, 0, 0, 0)
+transform = Transform3D(-0.93242586, 0, 0.36136106, 0, 1, 0, -0.36136106, 0, -0.93242586, 0, 0, 0)
 
 [node name="Cube_004" type="MeshInstance3D" parent="SubViewport/3dclock/sec" unique_id=1586573245]
 transform = Transform3D(-0.93614143, 0, -8.1840085e-08, 0, 0.9361412, 0, 8.1840085e-08, 0, -0.93614143, 0, 0.019, 0)
@@ -473,7 +476,7 @@ mesh = SubResource("ArrayMesh_h1dle")
 surface_material_override/0 = SubResource("StandardMaterial3D_330nd")
 
 [node name="min" type="Node3D" parent="SubViewport/3dclock" unique_id=1334595637]
-transform = Transform3D(0.026177838, 0, -0.9996571, 0, 1, 0, 0.9996571, 0, 0.026177838, 0, 0, 0)
+transform = Transform3D(0.63409716, 0, 0.77325314, 0, 1, 0, -0.77325314, 0, 0.63409716, 0, 0, 0)
 
 [node name="Cube_002" type="MeshInstance3D" parent="SubViewport/3dclock/min" unique_id=757415313]
 transform = Transform3D(-4.092004e-08, 0, 0.9361414, 0, 0.9361413, 0, -0.9361414, 0, -4.092004e-08, -0.0030028913, 0.019, 0)
@@ -485,7 +488,7 @@ mesh = SubResource("ArrayMesh_3y68t")
 surface_material_override/0 = SubResource("StandardMaterial3D_330nd")
 
 [node name="hour" type="Node3D" parent="SubViewport/3dclock" unique_id=1399897983]
-transform = Transform3D(-0.60702896, 0, -0.79467946, 0, 1, 0, 0.79467946, 0, -0.60702896, 0, 0, 0)
+transform = Transform3D(0.997288, 0, 0.073596455, 0, 1, 0, -0.073596455, 0, 0.997288, 0, 0, 0)
 
 [node name="Cube_003" type="MeshInstance3D" parent="SubViewport/3dclock/hour" unique_id=1742790930]
 transform = Transform3D(-4.0920035e-08, 0, -0.9361413, 0, 0.93614143, 0, 0.9361413, 0, -4.0920035e-08, -0.0030028913, 0.019, 0)
@@ -503,12 +506,24 @@ environment = SubResource("Environment_umt7f")
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=704851027]
 transform = Transform3D(-0.07178513, 0.9315992, -0.3563283, 0.6455539, 0.3157267, 0.6953969, 0.7603336, -0.18011001, -0.62406194, -0.716, 1.753, -0.486)
 
+[node name="Camera3D4" type="Camera3D" parent="SubViewport" unique_id=919927667]
+transform = Transform3D(-0.07178512, 0.9315992, -0.35632828, 0.26837316, 0.36211544, 0.8926636, 0.9606366, -0.031548973, -0.27601072, 0.82912993, 0.61050314, -0.12590873)
+
 [node name="Camera3D2" type="Camera3D" parent="SubViewport" unique_id=504704833]
-transform = Transform3D(-0.08031512, 0.9620592, 0.26075217, 0.011574165, -0.2606795, 0.96535605, 0.9967024, 0.08055068, 0.0098014735, 3.047, 2.942, -3.591)
-current = true
+transform = Transform3D(-0.08031512, 0.9620592, 0.26075217, 0.011574165, -0.2606795, 0.96535605, 0.9967024, 0.08055068, 0.0098014735, 3.142, 2.912, -3.701)
+
+[node name="Camera3D6" type="Camera3D" parent="SubViewport" unique_id=934669643]
+transform = Transform3D(1.3113416e-07, 1, -4.371139e-08, 3.821371e-15, 4.371139e-08, 1, 1, -1.3113416e-07, 1.9106855e-15, 0, 1.662, 0)
 
 [node name="Camera3D3" type="Camera3D" parent="SubViewport" unique_id=1233117410]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0.09, 1.59, 0)
+
+[node name="Camera3D5" type="Camera3D" parent="SubViewport" unique_id=2088655117 node_paths=PackedStringArray("targetcam")]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 2.565, 0)
+current = true
+script = ExtResource("5_4amms")
+targetcam = [NodePath("../Camera3D"), NodePath("../Camera3D4"), NodePath("../Camera3D2"), NodePath("../Camera3D6")]
+movespeed = 0.7
 
 [node name="3dclockhands" type="Node3D" parent="." unique_id=464006124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021184862, 0, -0.76260006)
