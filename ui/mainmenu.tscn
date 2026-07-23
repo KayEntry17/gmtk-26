@@ -391,6 +391,91 @@ shadow_mesh = SubResource("ArrayMesh_3gq6y")
 
 [sub_resource type="Environment" id="Environment_umt7f"]
 
+[sub_resource type="Animation" id="Animation_4amms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:material:shader_parameter/threshold")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/Camera3D5:curt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/3dclock:rapid")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uvrly"]
+resource_name = "trans"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Camera3D5:curt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:material:shader_parameter/threshold")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.17]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/3dclock:rapid")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yvvn"]
+_data = {
+&"RESET": SubResource("Animation_4amms"),
+&"trans": SubResource("Animation_uvrly")
+}
+
 [node name="Control" type="Control" unique_id=1385203752]
 layout_mode = 3
 anchors_preset = 15
@@ -441,9 +526,8 @@ script = ExtResource("1_0y3v4")
 
 [node name="3dclock" type="Node3D" parent="SubViewport" unique_id=2129000539]
 script = ExtResource("2_330nd")
-time = 42693.53063495258
+time = 15285.0
 starttime = Vector3(4, 14, 45)
-timeeff = 14.95
 rapid = true
 
 [node name="Cube3" type="MeshInstance3D" parent="SubViewport/3dclock" unique_id=268595767]
@@ -463,7 +547,7 @@ surface_material_override/0 = ExtResource("1_016uc")
 surface_material_override/1 = ExtResource("1_016uc")
 
 [node name="sec" type="Node3D" parent="SubViewport/3dclock" unique_id=1653137921]
-transform = Transform3D(-0.93242586, 0, 0.36136106, 0, 1, 0, -0.36136106, 0, -0.93242586, 0, 0, 0)
+transform = Transform3D(-2.526044e-05, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -2.526044e-05, 0, 0, 0)
 
 [node name="Cube_004" type="MeshInstance3D" parent="SubViewport/3dclock/sec" unique_id=1586573245]
 transform = Transform3D(-0.93614143, 0, -8.1840085e-08, 0, 0.9361412, 0, 8.1840085e-08, 0, -0.93614143, 0, 0.019, 0)
@@ -476,7 +560,7 @@ mesh = SubResource("ArrayMesh_h1dle")
 surface_material_override/0 = SubResource("StandardMaterial3D_330nd")
 
 [node name="min" type="Node3D" parent="SubViewport/3dclock" unique_id=1334595637]
-transform = Transform3D(0.63409716, 0, 0.77325314, 0, 1, 0, -0.77325314, 0, 0.63409716, 0, 0, 0)
+transform = Transform3D(0.02617544, 0, -0.9996572, 0, 1, 0, 0.9996572, 0, 0.02617544, 0, 0, 0)
 
 [node name="Cube_002" type="MeshInstance3D" parent="SubViewport/3dclock/min" unique_id=757415313]
 transform = Transform3D(-4.092004e-08, 0, 0.9361414, 0, 0.9361413, 0, -0.9361414, 0, -4.092004e-08, -0.0030028913, 0.019, 0)
@@ -488,7 +572,7 @@ mesh = SubResource("ArrayMesh_3y68t")
 surface_material_override/0 = SubResource("StandardMaterial3D_330nd")
 
 [node name="hour" type="Node3D" parent="SubViewport/3dclock" unique_id=1399897983]
-transform = Transform3D(0.997288, 0, 0.073596455, 0, 1, 0, -0.073596455, 0, 0.997288, 0, 0, 0)
+transform = Transform3D(-0.6070306, 0, -0.79467833, 0, 1, 0, 0.79467833, 0, -0.6070306, 0, 0, 0)
 
 [node name="Cube_003" type="MeshInstance3D" parent="SubViewport/3dclock/hour" unique_id=1742790930]
 transform = Transform3D(-4.0920035e-08, 0, -0.9361413, 0, 0.93614143, 0, 0.9361413, 0, -4.0920035e-08, -0.0030028913, 0.019, 0)
@@ -504,26 +588,31 @@ surface_material_override/0 = SubResource("StandardMaterial3D_330nd")
 environment = SubResource("Environment_umt7f")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=704851027]
-transform = Transform3D(-0.07178513, 0.9315992, -0.3563283, 0.6455539, 0.3157267, 0.6953969, 0.7603336, -0.18011001, -0.62406194, -0.716, 1.753, -0.486)
+transform = Transform3D(-0.07178513, 0.9315992, -0.3563283, 0.6455539, 0.31572673, 0.6953969, 0.7603336, -0.18010996, -0.62406194, -0.716, 1.753, -0.486)
 
 [node name="Camera3D4" type="Camera3D" parent="SubViewport" unique_id=919927667]
 transform = Transform3D(-0.07178512, 0.9315992, -0.35632828, 0.26837316, 0.36211544, 0.8926636, 0.9606366, -0.031548973, -0.27601072, 0.82912993, 0.61050314, -0.12590873)
 
 [node name="Camera3D2" type="Camera3D" parent="SubViewport" unique_id=504704833]
-transform = Transform3D(-0.08031512, 0.9620592, 0.26075217, 0.011574165, -0.2606795, 0.96535605, 0.9967024, 0.08055068, 0.0098014735, 3.142, 2.912, -3.701)
+transform = Transform3D(-0.08043355, 0.96216834, 0.26031256, 0.011363023, -0.26025662, 0.96547264, 0.9966952, 0.08061432, 0.010000223, 3.142, 2.912, -3.701)
 
 [node name="Camera3D6" type="Camera3D" parent="SubViewport" unique_id=934669643]
-transform = Transform3D(1.3113416e-07, 1, -4.371139e-08, 3.821371e-15, 4.371139e-08, 1, 1, -1.3113416e-07, 1.9106855e-15, 0, 1.662, 0)
+transform = Transform3D(7.5497894e-08, 1, -4.371139e-08, 3.821371e-15, 4.371139e-08, 1, 1, -7.5497894e-08, -5.2125306e-16, 0, 1.662, 0)
 
 [node name="Camera3D3" type="Camera3D" parent="SubViewport" unique_id=1233117410]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0.09, 1.59, 0)
 
 [node name="Camera3D5" type="Camera3D" parent="SubViewport" unique_id=2088655117 node_paths=PackedStringArray("targetcam")]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 2.565, 0)
+transform = Transform3D(-0.08043361, 0.96216834, 0.26031247, 0.01136291, -0.26025653, 0.9654727, 0.9966953, 0.08061436, 0.010000348, 3.1419919, 2.9119918, -3.7009919)
 current = true
 script = ExtResource("5_4amms")
 targetcam = [NodePath("../Camera3D"), NodePath("../Camera3D4"), NodePath("../Camera3D2"), NodePath("../Camera3D6")]
-movespeed = 0.7
+curt = 2
+movespeed = 2.0
+rotspeed = 10.0
 
 [node name="3dclockhands" type="Node3D" parent="." unique_id=464006124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021184862, 0, -0.76260006)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=554705727]
+libraries/ = SubResource("AnimationLibrary_7yvvn")
